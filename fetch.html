@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 class = "setup"></h1>
+    <h2 class = "punchline"></h2>
+
+
+    <script>
+        fetch("https://official-joke-api.appspot.com/random_joke")
+            .then(response =>{
+
+                if (!response.ok){
+                    throw new Error("Something went Wrong" + response.statusText)
+                }
+                return response.json()
+            })
+            .then(jokelang =>{
+                console.log(jokelang)
+                document.querySelector(".setup").innerHTML ="Setup: " + jokelang.setup
+                document.querySelector(".punchline").innerHTML ="Punchline: " + jokelang.punchline
+            })
+
+
+
+    </script>
+
+
+</body>
+</html>
